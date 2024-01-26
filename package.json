@@ -8,7 +8,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "node start index.js",
+    "start": "nodemon start index.js",
     "dev": "SET NODE_ENV=development && nodemon start server.js"
   },
   "keywords": [],
