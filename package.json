@@ -3,9 +3,13 @@
   "name": "homehencer-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "nodemon start server.js"
+    "start": "node start server.js",
+    "dev": "SET NODE_ENV=development && nodemon start server.js"
   },
   "keywords": [],
   "author": "",
