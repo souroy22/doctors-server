@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 // import connectDB from "./config/database.js";
 import mainRouter from "./app/routers/index.js";
-import doctorsController from "./app/controllers/doctorsControllers.js";
+// import doctorsController from "./app/controllers/";
 
 const app = express();
 
@@ -36,7 +36,7 @@ const corsOptions = {
 // Use the CORS middleware with the specified options
 app.use(cors(corsOptions));
 
-app.get("/api/v1/doctors/", doctorsController.getDoctorsBasedOnCity);
+app.get("/api/v1", mainRouter);
 
 app.listen(PORT, (error) => {
   if (error) {
