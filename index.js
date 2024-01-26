@@ -3,9 +3,11 @@ import dotenv from "dotenv";
 import cors from "cors";
 // import connectDB from "./config/database.js";
 import mainRouter from "./app/routers/index.js";
-// import doctorsController from "./app/controllers/";
+import doctorsController from "./app/controllers/doctorsControllers.js";
+// import serverless from "serverless-http";
 
 const app = express();
+const router = express.Router();
 
 if (process.env.NODE_ENV?.trim() === "production") {
   dotenv.config({ path: ".env.production" });
@@ -36,7 +38,11 @@ const corsOptions = {
 // Use the CORS middleware with the specified options
 app.use(cors(corsOptions));
 
-app.get("/api/v1", mainRouter);
+router.get("/", (req, res) => {
+  return res.status(200).json({ msg: "Success" });
+});
+
+router.get("/api/v1/doctors", doctorsController.getDoctorsBasedOnCity);
 
 app.listen(PORT, (error) => {
   if (error) {
@@ -45,3 +51,6 @@ app.listen(PORT, (error) => {
   }
   console.log(`Server is running on PORT: ${PORT}`);
 });
+
+// app.use("/.netlify/functions/api", router);
+// module.exports.handler = serverless(app);
